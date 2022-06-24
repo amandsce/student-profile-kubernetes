@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-deployment
+  labels:
+    name: student-profile-app
+    app: student-profile-app
+spec:
+  selector:
+    matchLabels:
+      name: student-profile-app
+      app: student-profile-app
+  replicas: 1
+  template:
+    metadata:
+      name: student-profile-app
+      labels:
+        name: student-profile-app
+        app: student-profile-app
+    spec:
+      containers:
+      - name: student
+        image: itsamananand/student-profile
+        ports:
+          - containerPort: 8000
